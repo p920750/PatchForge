@@ -1,23 +1,81 @@
-export default function PatchForgeDashboard() {
+"use client";
+import React, { useState } from "react";
+
+export default function Dashboard() {
+  const [status, setStatus] = useState("Idle");
+  const [logs, setLogs] = useState<string[]>([]);
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+
+  const runPatch = async () => {
+    setStatus("Scanning...");
+    setLogs((prev) => [...prev, "Initiating CVE-2026-2137 security scan..."]);
+    try {
+      const res = await fetch(`${API_URL}/scan-and-patch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ repo: "p920750/PatchForge", issueId: "CVE-2026-2137" }),
+      });
+      const data = await res.json();
+      setStatus("Completed");
+      setLogs((prev) => [...prev, `Patch generated cleanly. Run ID: ${data.runId}`]);
+    } catch (err) {
+      setStatus("Error");
+      setLogs((prev) => [...prev, "Failed to connect to PatchForge backend server."]);
+    }
+  };
+
   return (
-    <div style={{ padding: "32px", fontFamily: "sans-serif", background: "#0f172a", color: "#f8fafc", minHeight: "100vh" }}>
-      <h1 style={{ fontSize: "28px", fontWeight: "bold", color: "#38bdf8" }}>PatchForge Live Audit & Patch Monitor</h1>
-      <p style={{ color: "#94a3b8" }}>Harness: TrueForge | Sandbox: Daytona | Quality Guard: Qodo</p>
-      
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginTop: "24px" }}>
-        <div style={{ background: "#1e293b", padding: "20px", borderRadius: "8px", border: "1px solid #334155" }}>
-          <h2 style={{ fontSize: "18px", color: "#f43f5e" }}>Detected Vulnerabilities</h2>
-          <div style={{ marginTop: "12px", background: "#0f172a", padding: "12px", borderRadius: "6px" }}>
-            <strong>CVE-2026-2137</strong> — express @ 4.16.0
-            <p style={{ fontSize: "12px", color: "#94a3b8", margin: "4px 0 0 0" }}>Severity: HIGH | ReDoS in route matching logic</p>
+    <div style={{ padding: "clamp(16px, 4vw, 40px)", fontFamily: "sans-serif", background: "#0f172a", color: "#f8fafc", minHeight: "100vh", boxSizing: "border-box" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <h1 style={{ fontSize: "clamp(20px, 4vw, 28px)", fontWeight: "bold", marginBottom: "8px", wordBreak: "break-word" }}>
+          PatchForge Audit & Monitor
+        </h1>
+        <p style={{ color: "#94a3b8", marginBottom: "24px", wordBreak: "break-word", lineHeight: "1.5" }}>
+          Real-time vulnerability detection, Daytona sandbox runner, and Qodo review logs.
+        </p>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px", marginBottom: "24px" }}>
+          <div style={{ background: "#1e293b", padding: "20px", borderRadius: "8px", border: "1px solid #334155", boxSizing: "border-box" }}>
+            <h2 style={{ fontSize: "18px", marginBottom: "12px", wordBreak: "break-word" }}>Agent Control Panel</h2>
+            <p style={{ wordBreak: "break-word" }}>
+              <strong>Status:</strong> <span style={{ color: status === "Completed" ? "#4ade80" : status === "Error" ? "#ef4444" : "#facc15" }}>{status}</span>
+            </p>
+            <button 
+              onClick={runPatch} 
+              style={{ 
+                marginTop: "16px", 
+                padding: "10px 16px", 
+                background: "#3b82f6", 
+                color: "#fff", 
+                border: "none", 
+                borderRadius: "6px", 
+                cursor: "pointer",
+                width: "100%",
+                maxWidth: "240px",
+                fontWeight: "600"
+              }}
+            >
+              Execute Scan & Patch
+            </button>
+          </div>
+
+          <div style={{ background: "#1e293b", padding: "20px", borderRadius: "8px", border: "1px solid #334155", boxSizing: "border-box" }}>
+            <h2 style={{ fontSize: "18px", marginBottom: "12px", wordBreak: "break-word" }}>Active Target</h2>
+            <p style={{ wordBreak: "break-word", margin: "6px 0" }}><strong>Repository:</strong> p920750/PatchForge</p>
+            <p style={{ wordBreak: "break-word", margin: "6px 0" }}><strong>Target CVE:</strong> CVE-2026-2137</p>
+            <p style={{ wordBreak: "break-word", margin: "6px 0" }}><strong>Harness:</strong> TrueForge (Daytona Sandbox Enforced)</p>
           </div>
         </div>
 
-        <div style={{ background: "#1e293b", padding: "20px", borderRadius: "8px", border: "1px solid #334155" }}>
-          <h2 style={{ fontSize: "18px", color: "#10b981" }}>Daytona Sandbox Execution</h2>
-          <div style={{ marginTop: "12px", background: "#0f172a", padding: "12px", borderRadius: "6px" }}>
-            <p style={{ fontSize: "13px", color: "#34d399", margin: 0 }}>? Container booted in 1.2s</p>
-            <p style={{ fontSize: "13px", color: "#34d399", margin: "4px 0 0 0" }}>? express@4.21.2 passed 42/42 unit tests</p>
+        <div style={{ background: "#1e293b", padding: "20px", borderRadius: "8px", border: "1px solid #334155", boxSizing: "border-box" }}>
+          <h2 style={{ fontSize: "18px", marginBottom: "12px", wordBreak: "break-word" }}>Execution Audit Logs</h2>
+          <div style={{ background: "#020617", padding: "12px", borderRadius: "6px", fontFamily: "monospace", fontSize: "14px", minHeight: "100px", overflowX: "auto", wordBreak: "break-all" }}>
+            {logs.length === 0 ? (
+              <p style={{ color: "#64748b", margin: 0 }}>No actions triggered yet.</p>
+            ) : (
+              logs.map((log, i) => <p key={i} style={{ margin: "4px 0", color: "#38bdf8" }}>{log}</p>)
+            )}
           </div>
         </div>
       </div>
