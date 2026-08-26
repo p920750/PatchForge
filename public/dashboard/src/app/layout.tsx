@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'PatchForge Dashboard',
   description: 'Autonomous Security & Dependency Migration Suite Monitor',
