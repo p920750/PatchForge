@@ -1,4 +1,4 @@
-# PatchForge (Audit & Monitor)
+﻿# 🛡️ PatchForge (Audit & Monitor)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Frontend](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)](https://patchforgefrontend.vercel.app/)
@@ -9,14 +9,14 @@ PatchForge is an automated AI-driven vulnerability detection, sandbox execution,
 
 ---
 
-## ?? Live Deployments
+## 🌐 Live Deployments
 
 * **Frontend Dashboard**: [https://patchforgefrontend.vercel.app/](https://patchforgefrontend.vercel.app/)
 * **Express Backend API**: [https://patchforge-backend-boe7.onrender.com](https://patchforge-backend-boe7.onrender.com)
 
 ---
 
-## ?? Relevance & Problem Statement
+## 🎯 Relevance & Problem Statement
 
 In modern Software Supply Chain Security and DevSecOps, manual security patching remains a major operational bottleneck. Organizations face increasing rates of zero-day vulnerabilities and critical CVE disclosures, but patching processes are hampered by:
 
@@ -28,18 +28,18 @@ PatchForge solves these pain points by orchestrating automated, agentic patching
 
 ---
 
-## ?? Comparison with Existing Tools
+## 📊 Comparison with Existing Tools
 
 | Feature | Dependabot | Snyk | Manual Code Reviews | **PatchForge** |
 | :--- | :---: | :---: | :---: | :---: |
-| **Real-time Agentic Patching** | ? (Static PRs) | ? (Alerts & Static PRs) | ? (Manual Fixes) | **? Autonomous Agent** |
-| **Isolated Sandbox Execution** | ? | ? | ? | **? Daytona Sandbox** |
-| **Automated Code Review & Quality Guard** | ? | ? | ?? (Time Consuming) | **? Qodo AI Verification** |
-| **End-to-End Live Audit Streaming** | ? | ? | ? | **? Live Audit Stream** |
+| **Real-time Agentic Patching** | ❌ (Static PRs) | ❌ (Alerts & Static PRs) | ❌ (Manual Fixes) | **✅ Autonomous Agent** |
+| **Isolated Sandbox Execution** | ❌ | ❌ | ❌ | **✅ Daytona Sandbox** |
+| **Automated Code Review & Quality Guard** | ❌ | ❌ | ⚠️ (Time Consuming) | **✅ Qodo AI Verification** |
+| **End-to-End Live Audit Streaming** | ❌ | ❌ | ❌ | **✅ Live Audit Stream** |
 
 ---
 
-## ?? Target Audience & Key Benefits
+## 👥 Target Audience & Key Benefits
 
 ### **Target Audience**
 - **Security Engineers**: Automate CVE verification and patch validation without risk to internal infrastructure.
@@ -48,14 +48,14 @@ PatchForge solves these pain points by orchestrating automated, agentic patching
 - **Enterprise Developers**: Ensure dependency upgrades never break production unit test suites.
 
 ### **Key Benefits**
-- ? **Drastically Reduced MTTR**: Cut vulnerability remediation from days down to seconds.
-- ??? **Zero Local Machine Risk**: All test suites and dependency upgrades execute strictly inside isolated Daytona containers.
-- ?? **Pull-Request-Ready Fixes**: Automatically verified patches with quality guarantees from Qodo.
-- ??? **Transparent Live Auditing**: Stream real-time sandbox logs, container boot times, and test results straight to the dashboard.
+- ⚡ **Drastically Reduced MTTR**: Cut vulnerability remediation from days down to seconds.
+- 🛡️ **Zero Local Machine Risk**: All test suites and dependency upgrades execute strictly inside isolated Daytona containers.
+- 🤖 **Pull-Request-Ready Fixes**: Automatically verified patches with quality guarantees from Qodo.
+- 👁️ **Transparent Live Auditing**: Stream real-time sandbox logs, container boot times, and test results straight to the dashboard.
 
 ---
 
-## ??? Scope & Scale
+## 🔍 Scope & Scale
 
 ### **Current Capabilities**
 - **CVE-Targeted Scanning**: Automated detection and resolution targeting disclosed vulnerabilities (e.g., `CVE-2026-2137`).
@@ -69,7 +69,7 @@ PatchForge solves these pain points by orchestrating automated, agentic patching
 
 ---
 
-## ?? Environment Variables Setup
+## ⚙️ Environment Variables Setup
 
 To run PatchForge locally or deploy it to production, configure the environment variables as shown below:
 
@@ -96,40 +96,40 @@ NEXT_PUBLIC_API_URL=https://patchforge-backend-boe7.onrender.com
 
 ---
 
-## ??? Architecture & Working Mechanism
+## 🏗️ Architecture & Working Mechanism
 
 ```
-+------------------------------+
-�  Next.js 14 Dashboard        �
-�  (https://patchforge...)     �
-+------------------------------+
-               � 1. Trigger POST /scan-and-patch
-               ?
-+------------------------------+
-�  Express API Server          �
-�  (https://patchforge-backend)�
-+------------------------------+
-               � 2. Instantiate TrueForge Agent
-               ?
-+------------------------------+
-�  TrueForge SDK / Agent Core �
-+------------------------------+
-               � 3. Execute Isolated Testing
-               ?
-+------------------------------+
-�  Daytona Sandbox Container   �
-�  (Runs unit tests safely)   �
-+------------------------------+
-               � 4. Quality Audit & Review
-               ?
-+------------------------------+
-�  Qodo Automated Review       �
-+------------------------------+
-               � 5. Live Stream Status & Logs
-               ?
-+------------------------------+
-�  Real-Time Audit Monitor     �
-+------------------------------+
+┌──────────────────────────────┐
+│  Next.js 14 Dashboard        │
+│  (https://patchforge...)     │
+└──────────────┬───────────────┘
+               │ 1. Trigger POST /scan-and-patch
+               ▼
+┌──────────────────────────────┐
+│  Express API Server          │
+│  (https://patchforge-backend)│
+└──────────────┬───────────────┘
+               │ 2. Instantiate TrueForge Agent
+               ▼
+┌──────────────────────────────┐
+│  TrueForge SDK / Agent Core │
+└──────────────┬───────────────┘
+               │ 3. Execute Isolated Testing
+               ▼
+┌──────────────────────────────┐
+│  Daytona Sandbox Container   │
+│  (Runs unit tests safely)   │
+└──────────────┬───────────────┘
+               │ 4. Quality Audit & Review
+               ▼
+┌──────────────────────────────┐
+│  Qodo Automated Review       │
+└──────────────┬───────────────┘
+               │ 5. Live Stream Status & Logs
+               ▼
+┌──────────────────────────────┐
+│  Real-Time Audit Monitor     │
+└──────────────┬───────────────┘
 ```
 
 ### **Step-by-Step Workflow**
@@ -141,7 +141,7 @@ NEXT_PUBLIC_API_URL=https://patchforge-backend-boe7.onrender.com
 
 ---
 
-## ?? Tech Stack
+## ⚡ Tech Stack
 
 - **Frontend**: Next.js 14 (App Router), React 18, TypeScript, Vercel
 - **Backend**: Node.js, Express, TypeScript, `tsx`, Render
@@ -149,26 +149,26 @@ NEXT_PUBLIC_API_URL=https://patchforge-backend-boe7.onrender.com
 
 ---
 
-## ?? Repository Structure
+## 📂 Repository Structure
 
 ```
 PatchForge/
-+-- dashboard/                 <-- Next.js 14 Frontend Application
-�   +-- package.json           <-- Frontend dependencies & scripts
-�   +-- next.config.mjs        <-- Next.js configuration
-�   +-- tsconfig.json
-�   +-- src/app/               <-- App router (page.tsx, layout.tsx, globals.css)
-+-- src/                       <-- Express API Backend
-�   +-- index.ts               <-- Server entry point (/health, /scan-and-patch, /)
-�   +-- mockVulnerability.ts   <-- Daytona sandbox & CVE mock definitions
-+-- agent.json                 <-- TrueForge Agent configuration manifest
-+-- package.json               <-- Root package config
-+-- tsconfig.json              <-- Root TypeScript compiler configuration
+├── dashboard/                 <-- Next.js 14 Frontend Application
+│   ├── package.json           <-- Frontend dependencies & scripts
+│   ├── next.config.mjs        <-- Next.js configuration
+│   ├── tsconfig.json
+│   └── src/app/               <-- App router (page.tsx, layout.tsx, globals.css)
+├── src/                       <-- Express API Backend
+│   ├── index.ts               <-- Server entry point (/health, /scan-and-patch, /)
+│   └── mockVulnerability.ts   <-- Daytona sandbox & CVE mock definitions
+├── agent.json                 <-- TrueForge Agent configuration manifest
+├── package.json               <-- Root package config
+└── tsconfig.json              <-- Root TypeScript compiler configuration
 ```
 
 ---
 
-## ?? Local Setup & Quickstart
+## 🚀 Local Setup & Quickstart
 
 ### **1. Clone Repository**
 ```bash
@@ -193,7 +193,7 @@ npm run dev
 
 ---
 
-## ?? License
+## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
 
