@@ -69,6 +69,33 @@ PatchForge solves these pain points by orchestrating automated, agentic patching
 
 ---
 
+## ?? Environment Variables Setup
+
+To run PatchForge locally or deploy it to production, configure the environment variables as shown below:
+
+### **Backend (`/` or root `.env`)**
+```bash
+# Server Configuration
+PORT=10000
+NODE_ENV=development
+
+# CORS Allowed Origins
+FRONTEND_URL=https://patchforgefrontend.vercel.app
+
+# Integration Keys (Optional - default runs in mock execution mode)
+TRUEFORGE_API_KEY=
+DAYTONA_SANDBOX_KEY=
+QODO_API_KEY=
+```
+
+### **Frontend (`dashboard/.env.local`)**
+```bash
+# API Gateway Endpoint (Exposed to Client)
+NEXT_PUBLIC_API_URL=https://patchforge-backend-boe7.onrender.com
+```
+
+---
+
 ## ??? Architecture & Working Mechanism
 
 ```
