@@ -16,6 +16,14 @@ PatchForge is an automated AI-driven vulnerability detection, sandbox execution,
 
 ---
 
+## 🎥 Demonstration
+
+📽️[Watch the video](https://drive.google.com/file/d/1GFoTIkrln9d1ZwxFiCdxN_770_OzDg56/view?usp=sharing)
+
+> *Note: A local video file (`demo.mp4`) is also included in the root directory of this repository for offline viewing.*
+
+---
+
 ## 🎯 Relevance & Problem Statement
 
 In modern Software Supply Chain Security and DevSecOps, manual security patching remains a major operational bottleneck. Organizations face increasing rates of zero-day vulnerabilities and critical CVE disclosures, but patching processes are hampered by:
