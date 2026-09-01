@@ -201,6 +201,30 @@ npm run dev
 
 ---
 
+## 💻 Terminal Commands to Run
+
+Follow these commands to install dependencies, configure environment variables, and launch both backend and frontend services locally.
+
+### **1. Start Express Backend API**
+
+```bash
+npm run dev
+# Server will start on http://localhost:10000 (or specified PORT)
+```
+
+### **2. Install & Start Next.js Frontend Dashboard**
+
+Open a new terminal window or tab and run:
+
+```bash
+cd PatchForge/dashboard
+npm install
+npm run dev
+# Dashboard will start on http://localhost:3000 (or http://localhost:3001)
+```
+
+---
+
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
